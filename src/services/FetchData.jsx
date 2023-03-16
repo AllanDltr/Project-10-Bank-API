@@ -1,5 +1,4 @@
 export const FetchData = async (url, method, payload) => {
-
     const baseURL = "http://localhost:3001/api/v1/";
     const requestURL = baseURL + url;
     const {bearer, body} = payload;
@@ -15,12 +14,10 @@ export const FetchData = async (url, method, payload) => {
                             "authorization": bearer
                         }
                     });
-                    return  response.json();
-                } catch (err) {
-                   console.log('err',err)
-                }
-            }
-            else {
+                    return response.json();
+                } catch (error) {
+                   console.log('error ', error)
+            }} else {
                 try {
                     const response = await fetch(requestURL, {
                         method: method,
@@ -28,12 +25,10 @@ export const FetchData = async (url, method, payload) => {
                             "Content-Type": "application/json",
                         },
                         body: JSON.stringify(body) });
-                    return  response.json();
-                } catch (err) {
-                   console.log('err',err)
-                }
-            }
-            break;
+                    return response.json();
+                } catch (error) {
+                   console.log('error ',error)
+                }} break;
         case 'PUT':
             try {
                 const response = await fetch(requestURL, {
@@ -43,13 +38,10 @@ export const FetchData = async (url, method, payload) => {
                         "authorization": bearer
                     },
                     body: JSON.stringify(body)
-                });
-                return  response.json();
-            } catch (err) {
-               console.log('err',err)
-            }
-            break;
-        default:
-            break;
-    }
-};
+                })
+                return response.json();
+            } catch (error) {
+               console.log('error ', error)
+            } break;
+        default: break;
+    }}

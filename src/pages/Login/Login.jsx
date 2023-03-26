@@ -9,5 +9,4 @@ export const Login = () => {
         <Form />
       </main>
     </div>
-  )
-}
+  )}

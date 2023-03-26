@@ -11,7 +11,6 @@ export const EditProfile = () => {
         firstName: UserInfo.firstName,
         lastName: UserInfo.lastName,
     })
-
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
@@ -24,7 +23,7 @@ export const EditProfile = () => {
     const submitHandler = async (e) => {
         e.preventDefault()
         if(profileData.firstName === "" || profileData.lastName === "") {
-            return;
+            return
         } else {
             const bearer = "Bearer "+ token
             const fetchedData = await FetchData('user/profile', 'PUT', {bearer: bearer, body:profileData})
@@ -32,7 +31,6 @@ export const EditProfile = () => {
             navigate('/profile')
     }}
     const { firstName, lastName } = profileData;
-
     return (
         <main className="main bg-dark">
             <section className="edit-profile-content">

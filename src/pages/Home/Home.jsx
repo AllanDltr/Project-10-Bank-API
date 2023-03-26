@@ -9,6 +9,5 @@ export const Home = () => {
                 <Hero />
                 <Features />
             </main>
-
     </div>
-)};
+)}

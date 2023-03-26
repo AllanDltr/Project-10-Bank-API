@@ -17,7 +17,6 @@ const authSlice = createSlice({
     },
     addUserInfo : (state, action) => {
       const { firstName, lastName, email } = action.payload
-      console.log("auth/addUserInfo", initialState.token)
       state.userInfo.firstName = firstName;
       state.userInfo.lastName = lastName;
       state.userInfo.email = email;

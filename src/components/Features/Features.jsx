@@ -5,7 +5,6 @@ import security from '../../assets/Icons/icon-security.png'
 import './Features.css'
 
 export const Features = () => {
-
     return (
         <section className="features">
             <h2 className="sr-only"> Features </h2>
@@ -25,4 +24,4 @@ export const Features = () => {
                     <p> We use top of the line encryption to make sure your data and money is always safe.</p>
                 </div>
         </section>
-    )};
+    )}

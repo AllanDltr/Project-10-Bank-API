@@ -10,7 +10,6 @@ import {EditProfile} from './pages/EditProfile/EditProfile.jsx'
 import './App.css'
 
 export const App = () => {
-
   const[tokenInLocalStorage, setTokenInLocalStorage] = useState()
 
   useEffect(() => {
@@ -25,12 +24,12 @@ export const App = () => {
   return (
     <div className="App">
       <Header />
-          <Routes>
-              <Route path="/" element={<Home tokenExists={tokenInLocalStorage}/>} />
-              <Route path="/sign-in" element={<Login />} />
-              <Route path="/profile" element={<Profile />} />
-              <Route path="profile/edit" element={<EditProfile />} />
-          </Routes>
+      <Routes>
+          <Route path="/" element={<Home tokenExists={tokenInLocalStorage}/>} />
+          <Route path="/sign-in" element={<Login />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="profile/edit" element={<EditProfile />} />
+      </Routes>
       <Footer />
     </div>
   )}

@@ -1,0 +1,199 @@
+swagger: 3.0.3
+info:
+  title: Bank Argent API documentation
+  description: |-
+    Ideas for endpoint for Phase 2 in the Project 13 for OpenClassroom
+    - visualiser toutes leurs transactions pour le mois en cours ;
+    - visualiser les détails d'une transaction dans une autre vue ;
+    - ajouter, modifier ou supprimer des informations sur une transaction.
+  version: 1.0.11
+host: localhost:3001
+basePath: api/v2
+schemes:
+  - http
+paths:
+  /transactions:
+    get:
+      security:
+        - Bearer: []
+      tags:
+        - Transactions
+      summary: See all transactions
+      description: Get all transactions for the month
+      operationId: getTransactions
+      parameters:
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT Token
+          required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Pet'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pet'
+        '400':
+          description: Invalid arguments
+        '404':
+          description: Can't find transactions history for this user
+        '500':
+          description: Internal Error Server
+          
+  /transactions/transactions_id:
+    get:
+      security:
+        - Bearer: []
+      tags:
+        - Transactions
+      summary: See a specific transaction
+      description : Get infos about a specific transaction
+      operationId: getTransaction
+      parameters:
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT Token
+          required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Pet'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pet'
+        '400':
+          description: Invalid ID argument
+        '404':
+          description: Can't find this specific transaction
+        '500':
+          description: Internal Error Server
+          
+  /transactions/transactions_id/edit/modify:
+    put:
+      security:
+        - Bearer: []
+      tags:
+        - Transactions
+      summary: Modify a transaction
+      description: Modify informations about a specific transaction
+      operationId: putTransaction
+      parameters:
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT Token
+          required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Pet'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pet'
+        '400':
+          description: Invalid argument
+        '404':
+          description: Can't find this specific transaction
+        '500':
+          description: Internal Error Server
+          
+  /transactions/transactions_id/edit/add:
+    post:
+      security:
+        - Bearer: []
+      tags:
+        - Transactions
+      summary: Add info to transaction
+      description: Add new informations about a specific transaction
+      operationId: postTransaction
+      parameters:
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT Token
+          required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Pet'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pet'
+        '400':
+          description: Invalid argument
+        '404':
+          description: Can't find this specific transaction
+        '500':
+          description: Internal Error Server
+          
+  /transactions/transactions_id/edit/delete:
+    delete:
+      security:
+        - Bearer: []
+      tags:
+        - Transactions
+      summary: Delete info to transaction
+      description: Delete informations about a specific transaction
+      operationId: deleteTransaction
+      parameters:
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT Token
+          required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Pet'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pet'
+        '400':
+          description: Invalid argument
+        '404':
+          description: Can't find this specific transaction
+        '500':
+          description: Internal Error Server
+      
+      
+          
+          
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        email:
+          type: string
+          description: user email
+        password:
+          type: string
+          description: user password
+        firstName:
+          type: string
+          description: user first name
+        lastName:
+          type: string
+          description: user last name
+  securitySchemes:
+    Bearer:
+      type: apiKey
+      name: Authorization
+      in: header

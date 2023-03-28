@@ -110,6 +110,162 @@ paths:
           description: Invalid Fields
         '500':
           description: Internal Server Error
+  /transactions:
+    get:
+      security:
+        - Bearer: []
+      tags:
+        - Transactions
+      summary: See all transactions
+      description: Get all transactions for the month
+      operationId: getTransactions
+      parameters:
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT Token
+          required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/definitions/Transactions'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/definitions/Transactions'
+        '400':
+          description: Invalid arguments
+        '404':
+          description: Can't find transactions history for this user
+        '500':
+          description: Internal Error Server
+  /transactions/transactions_id:
+    get:
+      security:
+        - Bearer: []
+      tags:
+        - Transactions
+      summary: See a specific transaction
+      description : Get infos about a specific transaction
+      operationId: getTransaction
+      parameters:
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT Token
+          required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/definitions/Transactions'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/definitions/Transactions'
+        '400':
+          description: Invalid ID argument
+        '404':
+          description: Can't find this specific transaction
+        '500':
+          description: Internal Error Server
+  /transactions/transactions_id/edit/modify:
+    put:
+      security:
+        - Bearer: []
+      tags:
+        - Transactions
+      summary: Modify a transaction
+      description: Modify informations about a specific transaction
+      operationId: putTransaction
+      parameters:
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT Token
+          required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/definitions/Transactions'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/definitions/Transactions'
+        '400':
+          description: Invalid argument
+        '404':
+          description: Can't find this specific transaction
+        '500':
+          description: Internal Error Server
+  /transactions/transactions_id/edit/add:
+    post:
+      security:
+        - Bearer: []
+      tags:
+        - Transactions
+      summary: Add info to transaction
+      description: Add new informations about a specific transaction
+      operationId: postTransaction
+      parameters:
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT Token
+          required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/definitions/Transactions'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/definitions/Transactions'
+        '400':
+          description: Invalid argument
+        '404':
+          description: Can't find this specific transaction
+        '500':
+          description: Internal Error Server
+          
+  /transactions/transactions_id/edit/delete:
+    delete:
+      security:
+        - Bearer: []
+      tags:
+        - Transactions
+      summary: Delete info to transaction
+      description: Delete informations about a specific transaction
+      operationId: deleteTransaction
+      parameters:
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT Token
+          required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/definitions/Transactions'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/definitions/Transactions'
+        '400':
+          description: Invalid argument
+        '404':
+          description: Can't find this specific transaction
+        '500':
+          description: Internal Error Server
 securityDefinitions:
   Bearer:
     type: apiKey
@@ -164,3 +320,8 @@ definitions:
         type: string
       lastName:
         type: string
+  Transactions:
+  type: object
+  properties:
+    token:
+    type: string
